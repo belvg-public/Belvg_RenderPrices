@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Belvg_RenderPrices>
+            <version>0.0.1</version>
+        </Belvg_RenderPrices>
+    </modules>
+    <global>
+        <models>
+            <belvg_render_prices>
+                <class>Belvg_RenderPrices_Model</class>
+            </belvg_render_prices>
+        </models>
+        <helpers>
+            <belvg_render_prices>
+                <class>Belvg_RenderPrices_Helper</class>
+            </belvg_render_prices>
+        </helpers>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <belvg_render_prices>
+                    <file>belvg/render_prices.xml</file>
+                </belvg_render_prices>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Belvg_RenderPrices>
+                    <files>
+                        <default>Belvg_RenderPrices.csv</default>
+                    </files>
+                </Belvg_RenderPrices>
+            </modules>
+        </translate>
+        <events>
+            <!--
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <belvg_render_prices>
+                        <type>model</type>
+                        <class>Belvg_RenderPrices_Model_Observer</class>
+                        <method>core_block_abstract_to_html_before</method>
+                    </belvg_render_prices>
+                </observers>
+            </core_block_abstract_to_html_before>
+             -->
+            <core_block_abstract_to_html_after>
+                <observers>
+                    <belvg_render_prices_after>
+                        <class>belvg_render_prices/observer</class>
+                        <method>core_block_abstract_to_html_after</method>
+                    </belvg_render_prices_after>
+                </observers>
+            </core_block_abstract_to_html_after>
+
+            <catalog_product_load_after>
+                <observers>
+                    <product_load_after>
+                        <class>belvg_render_prices/observer</class>
+                        <method>catalog_product_load_after</method>
+                    </product_load_after>
+                </observers>
+            </catalog_product_load_after>
+
+            <catalog_product_collection_load_after>
+                <observers>
+                    <catalog_product_collection_load_after>
+                        <class>belvg_render_prices/observer</class>
+                        <method>catalog_product_collection_load_after</method>
+                    </catalog_product_collection_load_after>
+                </observers>
+            </catalog_product_collection_load_after>
+        </events>
+    </frontend>
+
+
+
+
+</config>
+
